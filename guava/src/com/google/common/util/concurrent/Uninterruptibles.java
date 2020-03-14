@@ -132,6 +132,7 @@ public final class Uninterruptibles {
   public static boolean awaitUninterruptibly(Condition condition, long timeout, TimeUnit unit) {
     boolean interrupted = false;
     try {
+      if (timeout<1) timeout=200;
       long remainingNanos = unit.toNanos(timeout);
       long end = System.nanoTime() + remainingNanos;
 
